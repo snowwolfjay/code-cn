@@ -36,7 +36,7 @@ global.打印 = (...参数组) => {
 global.程序 = () => {
     const 状态 = {}
     return {
-        值: 状态,
+        状态,
         执行(指令) {
             指令(状态, this)
             return this
@@ -53,9 +53,40 @@ global.程序 = () => {
             }
             对象[路径[0]] = 值
             return this
+        },
+        如果(条件函数) {
+            const 甲 = []
+            const 条件 = 条件函数(状态)
+            const 条件对象 = {
+                那么: (函数) => {
+                    if (条件) {
+                        函数()
+                    }
+                    甲.push(1)
+                    if (甲.length === 2) {
+                        return this
+                    }
+                    return 条件对象
+                },
+                否则: (函数) => {
+                    if (!条件) {
+                        函数()
+                    }
+                    甲.push(1)
+                    if (甲.length === 2) {
+                        return this
+                    }
+                    return 条件对象
+                }
+            }
+            return 条件对象
+
         }
     }
 }
 
-global.函数 = (定义,) => new Function('状态', 定义)
+global.函数 = (定义,) => new Function('状态',
+    定义
+        .replace("返回", "return")
+)
 global.参数 = global.函数
