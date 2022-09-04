@@ -1,4 +1,4 @@
-# 这是一个测试库，集合一些我用来联系中英文组合编程的code
+## 这是一个测试库，集合一些我用来联系中英文组合编程的code , 用于学习和测试目的
 
 ## 首选语言包括：Javascript(Typescript), Python , Rust, Matlab, Swift, Java , Lua, VB, C#
 
